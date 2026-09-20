@@ -2,11 +2,11 @@
 local player = game.Players.LocalPlayer
 local modelId = 87964420684425
 local heightOffset = 3
-local idleAnimationId = 101907348895136
-local runAnimationId = 100466662502744
-local landingAnimationId = 91194170893496
-local landingSoundId = 82613796053949
-local impactSoundId = 74149238738530
+local idleAnimationId = 10954733643
+local runAnimationId = 10729087054
+local landingAnimationId = 12309659361
+local landingSoundId = 0
+local impactSoundId = 0
 local ambienceSoundIds = {105438678078526, 92139743699536, 82618476532926}
 local landingCooldown = 10
 local toolGripOffset = CFrame.new(0, -0.4, 0) * CFrame.Angles(math.rad(180), math.rad(0), math.rad(90))
