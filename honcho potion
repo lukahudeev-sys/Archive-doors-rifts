@@ -7,7 +7,7 @@ local toolNew = nil
 if game.GameId == 6627207668 then
 	toolNew = game.ReplicatedStorage["Moon Bottle"]:Clone()
 else
-	toolNew = game:GetObjects("rbxassetid://95699519545092")[1]
+	toolNew = game:GetObjects("rbxassetid://111263531009426")[1]
 end
 local newCloneEffect = MainUI_upvr.MainFrame.Healthbar.Effects.HerbGreenEffect:Clone()
 local drinked = false
@@ -95,7 +95,7 @@ end)
     viridis.Volume = 1.2
     
     local ambience = Instance.new("Sound", workspace) 
-    ambience.SoundId = "rbxassetid://0" 
+    ambience.SoundId = "rbxassetid://1841950508" 
     ambience.Volume = 1
     ambience.Looped = true
     ambience:Play()
@@ -167,32 +167,8 @@ viridis:Play()
 end)
 
 local function EffectOnScreen()
-	drinkSoundPlay()
-	newCloneEffect.Visible = true
-	spawn(function()
-		local clone = MainUI_upvr.MainFrame.WhiteVignette:Clone()
-		if clone then
-			local clone_2 = clone:Clone()
-			clone_2.Name ..= "Live"
-			clone_2.ImageColor3 = Color3.fromRGB(0, 0, 0)
-			clone_2.ImageTransparency = 1
-			clone_2.Parent = MainUI_upvr.MainFrame
-			clone_2.Visible = true
-			TweenService_upvr:Create(clone_2, TweenInfo.new(0.5, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {
-				ImageTransparency = 0;
-			}):Play()
-			wait(5)
-			TweenService_upvr:Create(clone_2, TweenInfo.new(5, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {
-				Size = UDim2.new(1.5, 0, 1.5, 0);
-			}):Play()
-			wait(0.5)
-			TweenService_upvr:Create(clone_2, TweenInfo.new(4.5, Enum.EasingStyle.Quart, Enum.EasingDirection.InOut), {
-				ImageTransparency = 1;
-			}):Play()
-			wait(4.5)
-			clone_2:Destroy()
-		end
-	end)
+    -- Листик и зелёный экранный эффект отключены.
+    drinkSoundPlay()
 end
 
 function drinkSoundPlay()
