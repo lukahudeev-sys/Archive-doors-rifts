@@ -40,22 +40,6 @@ getgenv().ViridislightRunning = true
 local Humanoid = Character:WaitForChild("Humanoid")
 local RootPart = Character:WaitForChild("HumanoidRootPart")
 
-local potionLight = Instance.new("PointLight")
-potionLight.Name = "ViridisLight"
-potionLight.Color = Color3.fromRGB(0,255,0)
-potionLight.Brightness = 2
-potionLight.Range = 0
-potionLight.Shadows = false
-potionLight.Parent = RootPart
-
-TweenService:Create(
-	potionLight,
-	TweenInfo.new(2.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-	{
-		Range = 45
-	}
-):Play()
-
 local Camera = workspace.CurrentCamera
 local Collision
 
@@ -111,7 +95,7 @@ end)
     viridis.Volume = 1.2
     
     local ambience = Instance.new("Sound", workspace) 
-    ambience.SoundId = "rbxassetid://1841950508" 
+    ambience.SoundId = "rbxassetid://0" 
     ambience.Volume = 1
     ambience.Looped = true
     ambience:Play()
@@ -357,7 +341,7 @@ local function applyMorph()
 
     game:GetService("StarterGui"):SetCore("SendNotification", {
         Title = "Credits",
-        Text = "Made by lkagod x a-120",
+        Text = "Made by MorthenHubber. Credit if you use it",
         Duration = 5
     })
 
