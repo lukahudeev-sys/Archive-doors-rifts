@@ -10,7 +10,7 @@ local impactSoundId = 74149238738530
 local ambienceSoundIds = {105438678078526, 92139743699536, 82618476532926}
 local landingCooldown = 10
 local toolGripOffset = CFrame.new(0, -0.4, 0) * CFrame.Angles(math.rad(180), math.rad(0), math.rad(90))
-local isThirdPerson = false
+local isThirdPerson = true
 
 -- Custom Movement Settings
 local customWalkSpeed = 45
