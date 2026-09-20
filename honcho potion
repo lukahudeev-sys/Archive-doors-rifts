@@ -189,7 +189,7 @@ end
 
 toolNew.Parent = game.Players.LocalPlayer.Backpack
 toolNew.Name = "Viridislight Bottle" 
-toolNew.TextureId = "rbxassetid://76865808847706" 
+toolNew.TextureId = "rbxassetid://81125686160438" 
 
 toolNew.Equipped:Connect(function()
 	if game.GameId == 6627207668 then
