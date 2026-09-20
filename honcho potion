@@ -116,100 +116,6 @@ end)
     ambience.Looped = true
     ambience:Play()
     
-					local Workspace = game:GetService("Workspace")
-
-local stopped = false
-local activeHighlights = {}
-
-local function createHighlight(inst)
-	local h = Instance.new("Highlight")
-	h.FillColor = Color3.fromRGB(120, 255, 160)
-	h.OutlineColor = Color3.fromRGB(80, 255, 120)
-	h.FillTransparency = 0.4
-	h.OutlineTransparency = 0
-	h.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
-	h.Parent = inst
-
-	table.insert(activeHighlights, h)
-end
-
-local function process(inst)
-	if stopped then return end
-
-	-- 🚪 Door (MODEL only, exact name)
-	if inst:IsA("Model") and inst.Name == "Door" then
-		if not inst:FindFirstChildOfClass("Highlight") then
-			local h = Instance.new("Highlight")
-			h.FillColor = Color3.fromRGB(120, 255, 160)
-			h.OutlineColor = Color3.fromRGB(80, 255, 120)
-			h.FillTransparency = 0.4
-			h.OutlineTransparency = 0
-			h.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
-			h.Parent = inst
-
-			table.insert(activeHighlights, h)
-		end
-	end
-
-	-- 🔑 KeyObtain (giữ nguyên)
-	if inst:IsA("Model") and inst.Name == "KeyObtain" then
-		if not inst:FindFirstChildOfClass("Highlight") then
-			local h = Instance.new("Highlight")
-			h.FillColor = Color3.fromRGB(120, 255, 160)
-			h.OutlineColor = Color3.fromRGB(80, 255, 120)
-			h.FillTransparency = 0.4
-			h.OutlineTransparency = 0
-			h.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
-			h.Parent = inst
-
-			table.insert(activeHighlights, h)
-		end
-	end
-end
-
-local function scanRooms()
-	if stopped then return end
-
-	local rooms = Workspace:FindFirstChild("CurrentRooms")
-	if not rooms then return end
-
-	for _, v in ipairs(rooms:GetDescendants()) do
-		process(v)
-	end
-end
-
--- 🔄 initial scan
-scanRooms()
-
--- 🔄 live scan
-local conn
-conn = Workspace.CurrentRooms.DescendantAdded:Connect(function(v)
-	if stopped then return end
-	task.wait()
-	process(v)
-end)
-
--- =========================
--- ⏳ TIMER CONTROL HOOK
--- (gắn vào script timer của m)
--- =========================
-local function stopHighlights()
-	stopped = true
-
-	-- disconnect event
-	if conn then
-		conn:Disconnect()
-	end
-
-	-- destroy all highlights
-	for _, h in ipairs(activeHighlights) do
-		if h and h.Parent then
-			h:Destroy()
-		end
-	end
-
-	activeHighlights = {}
-end
 
 local RunService = game:GetService("RunService")
 local player = game.Players.LocalPlayer
@@ -264,78 +170,6 @@ speedConn = RunService.Heartbeat:Connect(function()
 	end
 end)
 
--- =========================
--- ⏳ TIMER UI
--- =========================
-local gui = Instance.new("ScreenGui")
-gui.IgnoreGuiInset = true
-gui.ResetOnSpawn = false
-gui.Parent = player:WaitForChild("PlayerGui")
-
-local label = Instance.new("TextLabel")
-label.Size = UDim2.new(0, 200, 0, 40)
-label.Position = UDim2.new(0.5, -100, 0, 10)
-label.BackgroundTransparency = 1
-label.TextColor3 = Color3.fromRGB(170, 255, 180)
-label.TextStrokeTransparency = 0.6
-label.Font = Enum.Font.Gotham
-label.TextSize = 20
-label.Text = "1:00"
-label.Parent = gui
-
--- =========================
--- ⏱ TIMER LOGIC
--- =========================
-local timeLeft = 1
-
-local function formatTime(t)
-	local m = math.floor(t / 60)
-	local s = t % 60
-	return string.format("%d:%02d", m, s)
-end
-
--- =========================
--- 🔄 RESTORE SYSTEM
--- =========================
-local function restore()
-	
-	getgenv().ViridislightRunning = false
-	
-	if potionLight and potionLight.Parent then
-	local lightTween = TweenService:Create(
-		potionLight,
-		TweenInfo.new(2),
-		{
-			Range = 0
-		}
-	)
-
-	lightTween:Play()
-
-	lightTween.Completed:Connect(function()
-		if potionLight then
-			potionLight:Destroy()
-		end
-	end)
-end
-	
-	newCloneEffect.Visible = false
-	
-	if speedConn then
-	speedConn:Disconnect()
-end
-
-	-- tween speed back
-	local tween = TweenService:Create(humanoid, TweenInfo.new(2), {
-		WalkSpeed = originalWalkSpeed
-	})
-	tween:Play()
-
-	-- destroy UI
-	task.delay(2, function()
-		if gui then gui:Destroy() end
-	end)
-end
 
 viridis:Play() 
     
@@ -343,32 +177,6 @@ viridis:Play()
     viridis:Destroy() 
     end) 
 
--- =========================
--- ⏳ COUNTDOWN LOOP
--- =========================
-task.spawn(function()
-	while timeLeft >= 0 do
-		label.Text = formatTime(timeLeft)
-
-		if timeLeft == 0 then
-		stopRegen()
-		stopHighlights() 
-			restore()
-ambience:Destroy() 
-			
-			CollisionLoopRunning = false
-
-if CollisionClone then
-	CollisionClone:Destroy()
-end
-
-			break
-		end
-
-		timeLeft -= 1
-		task.wait(1)
-	end
-end)
 				end
 		end
 	end
@@ -549,7 +357,7 @@ local function applyMorph()
 
     game:GetService("StarterGui"):SetCore("SendNotification", {
         Title = "Credits",
-        Text = "Made by MorthenHubber. Credit if you use it",
+        Text = "Made by lkagod x a-120",
         Duration = 5
     })
 
