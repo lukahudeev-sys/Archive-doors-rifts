@@ -317,7 +317,7 @@ local function applyMorph()
 
     game:GetService("StarterGui"):SetCore("SendNotification", {
         Title = "Credits",
-        Text = "Made by MorthenHubber. Credit if you use it",
+        Text = "Made by lkagod. Credit if you use it",
         Duration = 5
     })
 
