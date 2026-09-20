@@ -95,7 +95,7 @@ end)
     viridis.Volume = 1.2
     
     local ambience = Instance.new("Sound", workspace) 
-    ambience.SoundId = "rbxassetid://1841950508" 
+    ambience.SoundId = "rbxassetid://0" 
     ambience.Volume = 1
     ambience.Looped = true
     ambience:Play()
@@ -179,7 +179,7 @@ function drinkSoundPlay()
 		if game.GameId == 6627207668 then
 			newSound.SoundId = "rbxassetid://103799151859408"
 		else
-			newSound.SoundId = "rbxassetid://18869124055"
+			newSound.SoundId = "rbxassetid://0"
 		end
 	else
 		newSound = workspace:WaitForChild("DrinkPotionAddonSound")
@@ -223,7 +223,7 @@ local toolGripOffset = CFrame.new(0, -0.4, 0) * CFrame.Angles(math.rad(180), mat
 local isThirdPerson = true
 
 -- Custom Movement Settings
-local customWalkSpeed = 45
+local customWalkSpeed = 18
 local customJumpPower = 50
 
 local morphActive = false
