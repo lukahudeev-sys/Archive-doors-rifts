@@ -2,6 +2,8 @@
 local player = game.Players.LocalPlayer
 local modelId = 87964420684425
 local heightOffset = 3
+-- Seek-style animation slots.
+-- Replace these IDs with your own published animations if needed.
 local idleAnimationId = 10729087054
 local runAnimationId = 10729087054
 local landingAnimationId = 12309659361
