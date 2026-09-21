@@ -4,9 +4,13 @@ local modelId = 87964420684425
 local heightOffset = 3
 -- Seek-style animation slots.
 -- Replace these IDs with your own published animations if needed.
-local idleAnimationId = 10729087054
+local cruxendAnimationId = 12309667757
+local cruxloopAnimationId = 12309664766
+local cruxstartAnimationId = 12309659361
+local minesintroAnimationId = 73347122874595
+local minesintro2AnimationId = 128243826423807
+local raiseAnimationId = 10954733643
 local runAnimationId = 10729087054
-local landingAnimationId = 12309659361
 local landingSoundId = 0
 local impactSoundId = 0
 local ambienceSoundIds = {105438678078526, 92139743699536, 82618476532926}
