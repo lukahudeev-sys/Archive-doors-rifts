@@ -1,6 +1,6 @@
 -- References & State Variables
 local player = game.Players.LocalPlayer
-local modelId = 87964420684425
+local modelId = 138109676448421
 local heightOffset = 3
 -- Seek-style animation slots.
 -- Replace these IDs with your own published animations if needed.
