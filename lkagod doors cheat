@@ -15,7 +15,7 @@ getgenv().Abysall = {
     Legit = true
 }
 
-local BaseUrl = "https://raw.githubusercontent.com/therealcookiemonsterof1966/AbysallContinued/main/"
+local BaseUrl = "https://raw.githubusercontent.com/lukahudeev-sys/Archive-doors-rifts/refs/heads/main/infotab%20lkagod"
 
 getgenv().Abysall = {
     Environment = loadstring(game:HttpGet(BaseUrl .. "Components/Environment.luau"))(),
@@ -651,7 +651,7 @@ Functions.Notify = function(Settings)
 			end
 		end
 		Globals.DoorsNotify({
-			Title = "Neilz Hub 1.0.1",
+			Title = "lkagod hub v1",
 			Description = Settings.Title,
 			Reason = Settings.Body,
 			Style = IsEntity and "WARNING" or "NOTIFICATION",
@@ -668,13 +668,13 @@ Functions.Notify = function(Settings)
 
 		if Settings.Image then
 			Globals.STX:Notify(
-				{Title = "Neilz Hub 1.0.1", Description = Settings.Title .. "\n" .. Settings.Body},
+				{Title = "lkagod hub v1", Description = Settings.Title .. "\n" .. Settings.Body},
 				{OutlineColor = Library.Scheme.AccentColor,Time = Settings.Time or 5, Type = "image"},
 				{Image = Settings.Image, ImageColor = Color3.fromRGB(255, 255, 255)}
 			)
 		else
 			Globals.STX:Notify(
-				{Title = "Neilz Hub 1.0.1", Description = Settings.Title .. "\n" .. Settings.Body},
+				{Title = "lkagod hub v1", Description = Settings.Title .. "\n" .. Settings.Body},
 				{OutlineColor = Library.Scheme.AccentColor,Time = Settings.Time or 5, Type = "default"}
 			)
 		end
@@ -1213,8 +1213,8 @@ Functions.GetRandomCode = function()
 end
 
 local Window = Library:CreateWindow({
-	Title = "Neilz Hub 1.0.1",
-	Footer = "Neilz Hub 1.0.1",
+	Title = "lkagod hub v1",
+	Footer = "lkagod hub v1",
 	NotifySide = "Right",
 	ShowCustomCursor = false,
 	AutoShow = true,
@@ -5628,7 +5628,7 @@ Functions.HandleCharacter = function(NewCharacter)
 		end
 
 		if Globals.SelfKilled and Globals.MainUI:FindFirstChild("Statistics") then
-			Globals.MainUI.Statistics.Death.Text = "Died to Neilz Hub"
+			Globals.MainUI.Statistics.Death.Text = "Died to lkagod hub v1"
 		end
 
 		local MainFrame = Globals.MainUI:FindFirstChild("MainFrame")
