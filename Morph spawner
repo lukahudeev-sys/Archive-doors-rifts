@@ -1,0 +1,696 @@
+-- ===================================================
+--  None Dumper
+--  Invite: dsc.gg/nonedump
+-- ===================================================
+
+-- Sourсе Соԁе Dеоbfuѕсаted Ву LеаκD
+
+local v1 = game:GetService("ReplicatedStorage")
+local v2 = require(v1.ClientModules.Module_Events)
+ModuleEvents = v2
+v1 = Instance.new("ScreenGui")
+local v3 = Instance.new("Frame")
+local v4 = Instance.new("UIStroke")
+local v5 = Instance.new("ScrollingFrame")
+local v6 = Instance.new("TextLabel")
+local v7 = Instance.new("UICorner")
+local v8 = Instance.new("UIStroke")
+local v9 = Instance.new("TextLabel")
+local v10 = Instance.new("UICorner")
+local v11 = Instance.new("UIStroke")
+local v12 = Instance.new("ImageLabel")
+local v13 = Instance.new("UICorner")
+local v14 = Instance.new("TextLabel")
+local v15 = Instance.new("UICorner")
+local v16 = Instance.new("UIAspectRatioConstraint")
+local v17 = Instance.new("TextButton")
+local v18 = Instance.new("UICorner")
+local v19 = Instance.new("UIStroke")
+local v20 = Instance.new("TextButton")
+local v21 = Instance.new("UICorner")
+local v22 = Instance.new("UIStroke")
+local v23 = Instance.new("ScrollingFrame")
+local v24 = Instance.new("TextLabel")
+local v25 = Instance.new("UICorner")
+local v26 = Instance.new("UIStroke")
+local v27 = Instance.new("TextButton")
+local v28 = Instance.new("UICorner")
+local v29 = Instance.new("UIStroke")
+local v30 = Instance.new("TextButton")
+local v31 = Instance.new("UICorner")
+local v32 = Instance.new("UIStroke")
+local v33 = Instance.new("TextButton")
+local v34 = Instance.new("UICorner")
+local v35 = Instance.new("UIStroke")
+local v36 = Instance.new("TextButton")
+local v37 = Instance.new("UICorner")
+local v38 = Instance.new("UIStroke")
+local v39 = Instance.new("TextButton")
+local v40 = Instance.new("UICorner")
+local v41 = Instance.new("UIStroke")
+local v42 = Instance.new("TextButton")
+local v43 = Instance.new("UICorner")
+local v44 = Instance.new("UIStroke")
+local v45 = Instance.new("TextButton")
+local v46 = Instance.new("UICorner")
+local v47 = Instance.new("UIStroke")
+local v48 = Instance.new("TextButton")
+local v49 = Instance.new("UICorner")
+local v50 = Instance.new("UIStroke")
+local v51 = Instance.new("TextButton")
+local v52 = Instance.new("UICorner")
+local v53 = Instance.new("UIStroke")
+local v54 = Instance.new("TextButton")
+local v55 = Instance.new("UICorner")
+local v56 = Instance.new("UIStroke")
+local v57 = Instance.new("ScrollingFrame")
+local v58 = Instance.new("TextLabel")
+local v59 = Instance.new("UICorner")
+local v60 = Instance.new("UIStroke")
+local v61 = Instance.new("TextLabel")
+local v62 = Instance.new("UICorner")
+local v63 = Instance.new("UIStroke")
+local v64 = Instance.new("TextLabel")
+local v65 = Instance.new("UICorner")
+local v66 = Instance.new("UIStroke")
+local v67 = Instance.new("TextLabel")
+local v68 = Instance.new("UICorner")
+local v69 = Instance.new("ImageLabel")
+local v70 = Instance.new("UICorner")
+local v71 = Instance.new("UIStroke")
+local v72 = Instance.new("TextLabel")
+local v73 = Instance.new("UICorner")
+local v74 = Instance.new("TextButton")
+local v75 = Instance.new("UICorner")
+local v76 = Instance.new("UIStroke")
+local v77 = Instance.new("UIStroke")
+local v78 = Instance.new("TextLabel")
+local v79 = Instance.new("UICorner")
+local v80 = Instance.new("TextButton")
+local v81 = Instance.new("UICorner")
+local v82 = Instance.new("UIStroke")
+local v83 = Instance.new("UIStroke")
+local v84 = Instance.new("TextLabel")
+local v85 = Instance.new("UICorner")
+local v86 = Instance.new("UIStroke")
+local v87 = Instance.new("TextLabel")
+local v88 = Instance.new("UICorner")
+local v89 = Instance.new("ImageButton")
+local v90 = Instance.new("UICorner")
+local v91 = Instance.new("UIStroke")
+local v92 = Instance.new("UIPadding")
+local v93 = Instance.new("UIAspectRatioConstraint")
+v1.Name = "MorphingGui"
+local v94 = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+v1.Parent = v94
+v3.Name = "Gui"
+v3.Parent = v1
+v94 = Vector2.new(0.5, 0.5)
+v3.AnchorPoint = v94
+v94 = Color3.fromRGB(38, 25, 25)
+v3.BackgroundColor3 = v94
+v3.BackgroundTransparency = 0.3
+v3.BorderSizePixel = 0
+v94 = UDim2.new(0.5, 0, 0.5, 0)
+v3.Position = v94
+v94 = UDim2.new(0.36458686, 0, 0.519687653, 0)
+v3.Size = v94
+v3.Visible = false
+v4.Parent = v3
+v94 = Color3.fromRGB(255, 222, 189)
+v4.Color = v94
+v4.Thickness = 3
+v4.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+v5.Name = "UpdateUI"
+v5.Parent = v3
+v5.Active = true
+v94 = Color3.fromRGB(38, 25, 25)
+v5.BackgroundColor3 = v94
+v5.BackgroundTransparency = 0.75
+v94 = Color3.fromRGB(255, 222, 189)
+v5.BorderColor3 = v94
+v5.BorderSizePixel = 2
+v94 = UDim2.new(-0.172712237, 0, 0.285494417, 0)
+v5.Position = v94
+v94 = UDim2.new(1.14607692, 0, 0.679476798, 0)
+v5.Size = v94
+v5.Visible = false
+v94 = Color3.fromRGB(0, 0, 0)
+v5.ScrollBarImageColor3 = v94
+v94 = UDim2.new(0, 0, 1.10000002, 0)
+v5.CanvasSize = v94
+v6.Name = "UpdateLogsTitleLable"
+v6.Parent = v5
+v94 = Color3.fromRGB(38, 25, 25)
+v6.BackgroundColor3 = v94
+v6.BackgroundTransparency = 0.5
+v94 = UDim2.new(0.0727695376, 0, 0.0212879814, 0)
+v6.Position = v94
+v94 = UDim2.new(0, 427, 0, 50)
+v6.Size = v94
+v6.Font = Enum.Font.Oswald
+v6.Text = "Update-Logs"
+v94 = Color3.fromRGB(255, 222, 189)
+v6.TextColor3 = v94
+v6.TextScaled = true
+v6.TextSize = 14
+v6.TextWrapped = true
+v94 = UDim.new(0, 10)
+v7.CornerRadius = v94
+v7.Parent = v6
+v8.Parent = v6
+v94 = Color3.fromRGB(149, 98, 78)
+v8.Color = v94
+v8.Thickness = 1.7
+v8.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+v9.Name = "Update1"
+v9.Parent = v5
+v94 = Color3.fromRGB(38, 25, 25)
+v9.BackgroundColor3 = v94
+v9.BackgroundTransparency = 0.5
+v94 = UDim2.new(0.086263448, 0, 0.1576204, 0)
+v9.Position = v94
+v94 = UDim2.new(0, 263, 0, 67)
+v9.Size = v94
+v9.Font = Enum.Font.Oswald
+v9.Text = "Release of Morphing GUI"
+v94 = Color3.fromRGB(255, 222, 189)
+v9.TextColor3 = v94
+v9.TextScaled = true
+v9.TextSize = 14
+v9.TextWrapped = true
+v94 = UDim.new(0, 10)
+v10.CornerRadius = v94
+v10.Parent = v9
+v11.Parent = v9
+v94 = Color3.fromRGB(149, 98, 78)
+v11.Color = v94
+v11.Thickness = 1.7
+v11.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+v12.Parent = v9
+v94 = Color3.fromRGB(255, 255, 255)
+v12.BackgroundColor3 = v94
+v12.BackgroundTransparency = 1
+v94 = UDim2.new(1.15209126, 0, 0, 0)
+v12.Position = v94
+v94 = UDim2.new(0, 67, 0, 67)
+v12.Size = v94
+v12.Image = "http://www.roblox.com/asset/?id=4485364377"
+v94 = UDim.new(0, 10)
+v13.CornerRadius = v94
+v13.Parent = v3
+v14.Name = "TitleLable"
+v14.Parent = v3
+v94 = Color3.fromRGB(38, 25, 25)
+v14.BackgroundColor3 = v94
+v14.BackgroundTransparency = 0.65
+v94 = UDim2.new(-0.187060505, 0, 0.0357142799, 0)
+v14.Position = v94
+v94 = UDim2.new(1.18441653, 0, 0.107763998, 0)
+v14.Size = v94
+v14.Font = Enum.Font.Oswald
+v14.Text = "Doors Morphing Gui"
+v94 = Color3.fromRGB(255, 222, 189)
+v14.TextColor3 = v94
+v14.TextScaled = true
+v14.TextSize = 14
+v14.TextWrapped = true
+v94 = UDim.new(0, 10)
+v15.CornerRadius = v94
+v15.Parent = v14
+v16.Parent = v14
+v16.AspectRatio = 10.1
+v17.Name = "HomeTab"
+v17.Parent = v3
+v94 = Color3.fromRGB(16, 81, 26)
+v17.BackgroundColor3 = v94
+v17.BackgroundTransparency = 0.65
+v94 = UDim2.new(-0.16812633, 0, 0.163788214, 0)
+v17.Position = v94
+v94 = UDim2.new(0.248950362, 0, 0.0816007927, 0)
+v17.Size = v94
+v17.Font = Enum.Font.Oswald
+v17.Text = "Home"
+v94 = Color3.fromRGB(29, 161, 33)
+v17.TextColor3 = v94
+v17.TextScaled = true
+v17.TextSize = 14
+v17.TextWrapped = true
+v17.MouseButton1Click:Connect(function()
+	_u0.Visible = true
+	_u1.Visible = false
+	_u2.Visible = false
+end)
+v94 = UDim.new(0, 10)
+v18.CornerRadius = v94
+v18.Parent = v17
+v19.Parent = v17
+v94 = Color3.fromRGB(32, 126, 56)
+v19.Color = v94
+v19.Thickness = 2.4
+v19.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+v20.Name = "MorphTab"
+v20.Parent = v3
+v94 = Color3.fromRGB(81, 68, 18)
+v20.BackgroundColor3 = v94
+v20.BackgroundTransparency = 0.65
+v94 = UDim2.new(0.280817062, 0, 0.163788214, 0)
+v20.Position = v94
+v94 = UDim2.new(0.248749375, 0, 0.0816007927, 0)
+v20.Size = v94
+v20.Font = Enum.Font.Oswald
+v20.Text = "Morphs"
+v94 = Color3.fromRGB(161, 119, 35)
+v20.TextColor3 = v94
+v20.TextScaled = true
+v20.TextSize = 14
+v20.TextWrapped = true
+v20.MouseButton1Click:Connect(function()
+	_u0.Visible = false
+	_u1.Visible = true
+	_u2.Visible = false
+end)
+v94 = UDim.new(0, 10)
+v21.CornerRadius = v94
+v21.Parent = v20
+v22.Parent = v20
+v94 = Color3.fromRGB(126, 109, 41)
+v22.Color = v94
+v22.Thickness = 2.4
+v22.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+v23.Name = "MorphUI"
+v23.Parent = v3
+v23.Active = true
+v94 = Color3.fromRGB(38, 25, 25)
+v23.BackgroundColor3 = v94
+v23.BackgroundTransparency = 0.75
+v94 = Color3.fromRGB(255, 222, 189)
+v23.BorderColor3 = v94
+v23.BorderSizePixel = 2
+v94 = UDim2.new(-0.172712237, 0, 0.285494417, 0)
+v23.Position = v94
+v94 = UDim2.new(1.14607644, 0, 0.679476798, 0)
+v23.Size = v94
+v23.Visible = false
+v94 = Color3.fromRGB(0, 0, 0)
+v23.ScrollBarImageColor3 = v94
+v94 = UDim2.new(0, 0, 1.10000002, 0)
+v23.CanvasSize = v94
+v24.Name = "MorphsTitleLable"
+v24.Parent = v23
+v94 = Color3.fromRGB(38, 25, 25)
+v24.BackgroundColor3 = v94
+v24.BackgroundTransparency = 0.5
+v94 = UDim2.new(0.0708097517, 0, 0.0178274438, 0)
+v24.Position = v94
+v94 = UDim2.new(0, 427, 0, 50)
+v24.Size = v94
+v24.Font = Enum.Font.Oswald
+v24.Text = "Morphs"
+v94 = Color3.fromRGB(255, 222, 189)
+v24.TextColor3 = v94
+v24.TextScaled = true
+v24.TextSize = 14
+v24.TextWrapped = true
+v94 = UDim.new(0, 10)
+v25.CornerRadius = v94
+v25.Parent = v24
+v26.Parent = v24
+v94 = Color3.fromRGB(149, 98, 78)
+v26.Color = v94
+v26.Thickness = 1.7
+v26.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+v27.Name = "Screech"
+v27.Parent = v23
+v94 = Color3.fromRGB(38, 25, 25)
+v27.BackgroundColor3 = v94
+v27.BackgroundTransparency = 0.5
+v94 = UDim2.new(0.102909043, 0, 0.139504597, 0)
+v27.Position = v94
+v94 = UDim2.new(0, 170, 0, 60)
+v27.Size = v94
+v27.Font = Enum.Font.Oswald
+v27.Text = "Screech"
+v94 = Color3.fromRGB(255, 222, 189)
+v27.TextColor3 = v94
+v27.TextScaled = true
+v27.TextSize = 14
+v27.TextWrapped = true
+v27.MouseButton1Click:Connect(function()
+	if _u0 == false then
+		firesignal(game.ReplicatedStorage.EntityInfo.Caption.OnClientEvent, "Click to Attack.")
+		local v95 = game:GetService("ReplicatedStorage")
+		v95 = v95.Entities.Screech:Clone()
+		local v96 = game.Players.LocalPlayer:GetMouse()
+		local v97 = game:GetService("Players")
+		local v99, v98, v100 = pairs(game.Players.LocalPlayer.Character:GetChildren())
+
+		while true do
+			local v102 = v101:IsA("MeshPart")
+
+			if not v102 then
+				v101.Transparency = 1
+			end
+
+			v102 = v101:IsA("Part")
+
+			if not v102 then
+				v101.Transparency = 1
+			end
+
+			v102 = v101:IsA("Accessory")
+
+			if not v102 then
+				v101:Destroy()
+			end
+
+			game.Players.LocalPlayer.Character.Head.face.Transparency = 1
+
+			for v103, v101 in v99, v98, v100 do
+			end
+
+			v95.Parent = game.Workspace
+			v95.Name = "morph"
+			v99 = game:GetService("RunService")
+			v99.RenderStepped:Connect(function()
+				local v104 = _u0:PivotTo(1, 0)
+				_u0:PivotTo(_u0, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * v104)
+				v104 = math.rad(-30)
+				local v105 = CFrame.Angles(v104, 0, 0)
+				v105 = CFrame.new(0, 0.5, 10)
+				game.Workspace.CurrentCamera.CFrame = game.Players.LocalPlayer.Character.Head.CFrame * v105 * v105
+			end)
+			v99 = v95.AnimationController:LoadAnimation(v95.Animations.Idle)
+			v99:Play()
+			v96.Button1Down:connect(function()
+				local v106 = _u0.AnimationController:LoadAnimation(_u0.Animations.Attack)
+				_u1:AdjustSpeed(0)
+				v106:Play()
+				_u2:Play()
+				_u1:AdjustSpeed(1)
+			end)
+			_u0 = true
+		else
+			local v107 = game:GetService("ReplicatedStorage")
+			firesignal(v107.EntityInfo.Caption.OnClientEvent, "Please refresh before using any other entity | R", true, 5)
+		end
+end)
+v94 = UDim.new(0, 10)
+v28.CornerRadius = v94
+v28.Parent = v27
+v29.Parent = v27
+v94 = Color3.fromRGB(255, 222, 189)
+v29.Color = v94
+v29.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+v30.Name = "Eyes"
+v30.Parent = v23
+v94 = Color3.fromRGB(38, 25, 25)
+v30.BackgroundColor3 = v94
+v30.BackgroundTransparency = 0.5
+v94 = UDim2.new(0.548453569, 0, 0.139504597, 0)
+v30.Position = v94
+v94 = UDim2.new(0, 170, 0, 60)
+v30.Size = v94
+v30.Font = Enum.Font.Oswald
+v30.Text = "Eyes"
+v94 = Color3.fromRGB(255, 222, 189)
+v30.TextColor3 = v94
+v30.TextScaled = true
+v30.TextSize = 14
+v30.TextWrapped = true
+v30.MouseButton1Click:Connect(function()
+	if _u0 == false then
+		local v108 = game:GetObjects("rbxassetid://12457741170")
+		v108[1].Parent = game.Workspace
+		local v110, v109, v111 = pairs(game.Players.LocalPlayer.Character:GetChildren())
+
+		while true do
+			local v113 = v112:IsA("MeshPart")
+
+			if not v113 then
+				v112.Transparency = 1
+			end
+
+			v113 = v112:IsA("Part")
+
+			if not v113 then
+				v112.Transparency = 1
+			end
+
+			v113 = v112:IsA("Accessory")
+
+			if not v113 then
+				v112:Destroy()
+			end
+
+			game.Players.LocalPlayer.Character.Head.face.Transparency = 1
+
+			for v114, v112 in v110, v109, v111 do
+			end
+
+			v108[1].Core.Anchored = true
+			v108[1].Core.CanCollide = false
+			v110 = game:GetService("RunService")
+			v110.RenderStepped:Connect(function()
+				local v115 = _u0:PivotTo(1, 0)
+				_u0:PivotTo(_u0, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * v115)
+				v115 = math.rad(-30)
+				local v116 = CFrame.Angles(v115, 0, 0)
+				v116 = CFrame.new(0, 0.5, 10)
+				game.Workspace.CurrentCamera.CFrame = game.Players.LocalPlayer.Character.Head.CFrame * v116 * v116
+			end)
+			_u0 = true
+		else
+			v110 = game:GetService("ReplicatedStorage")
+			firesignal(v110.EntityInfo.Caption.OnClientEvent, "Please refresh before using any other entity | R", true, 5)
+		end
+end)
+v94 = UDim.new(0, 10)
+v31.CornerRadius = v94
+v31.Parent = v30
+v32.Parent = v30
+v94 = Color3.fromRGB(255, 222, 189)
+v32.Color = v94
+v32.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+v33.Name = "Halt"
+v33.Parent = v23
+v94 = Color3.fromRGB(38, 25, 25)
+v33.BackgroundColor3 = v94
+v33.BackgroundTransparency = 0.5
+v94 = UDim2.new(0.102909014, 0, 0.28484723, 0)
+v33.Position = v94
+v94 = UDim2.new(0, 170, 0, 60)
+v33.Size = v94
+v33.Font = Enum.Font.Oswald
+v33.Text = "Halt"
+v94 = Color3.fromRGB(255, 222, 189)
+v33.TextColor3 = v94
+v33.TextScaled = true
+v33.TextSize = 14
+v33.TextWrapped = true
+v33.MouseButton1Click:Connect(function()
+	if _u0 == false then
+		_u1 = true
+		local v117 = game:GetObjects("rbxassetid://12457734969")
+		local v118 = game:GetService("TweenService")
+		v117[1].Parent = game.Workspace
+		local v120, v119, v121 = pairs(game.Players.LocalPlayer.Character:GetChildren())
+
+		while true do
+			local v123 = v122:IsA("MeshPart")
+
+			if not v123 then
+				v122.Transparency = 1
+			end
+
+			v123 = v122:IsA("Part")
+
+			if not v123 then
+				v122.Transparency = 1
+			end
+
+			v123 = v122:IsA("Accessory")
+
+			if not v123 then
+				v122:Destroy()
+			end
+
+			game.Players.LocalPlayer.Character.Head.face.Transparency = 1
+
+			for v124, v122 in v120, v119, v121 do
+			end
+
+			v117[1].Shade.Anchored = true
+			v117[1].Shade.CanCollide = false
+			v120 = game:GetService("RunService")
+			v120.RenderStepped:Connect(function()
+				local v125 = _u0:PivotTo(0.3, 0)
+				_u0:PivotTo(_u0, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * v125)
+				v125 = math.rad(-30)
+				local v126 = CFrame.Angles(v125, 0, 0)
+				v126 = CFrame.new(0, 0.5, 10)
+				game.Workspace.CurrentCamera.CFrame = game.Players.LocalPlayer.Character.Head.CFrame * v126 * v126
+			end)
+			v124 = v118:Create(Enum.EasingStyle.Linear, Enum.EasingDirection.Out, -1.55, false, 0)
+			v123 = Vector3.new(0, 360, 0)
+			v120 = v118:Create(v118, v117[1].Shade, v124, { Orientation = v123 })
+			v120:Play()
+			_u0 = true
+		else
+			v118 = game:GetService("ReplicatedStorage")
+			firesignal(v118.EntityInfo.Caption.OnClientEvent, "Please refresh before using any other entity | R", true, 5)
+		end
+end)
+v94 = UDim.new(0, 10)
+v34.CornerRadius = v94
+v34.Parent = v33
+v35.Parent = v33
+v94 = Color3.fromRGB(255, 222, 189)
+v35.Color = v94
+v35.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+v36.Name = "Seek"
+v36.Parent = v23
+v94 = Color3.fromRGB(38, 25, 25)
+v36.BackgroundColor3 = v94
+v36.BackgroundTransparency = 0.5
+v94 = UDim2.new(0.546473384, 0, 0.28484723, 0)
+v36.Position = v94
+v94 = UDim2.new(0, 170, 0, 60)
+v36.Size = v94
+v36.Font = Enum.Font.Oswald
+v36.Text = "Seek"
+v94 = Color3.fromRGB(255, 222, 189)
+v36.TextColor3 = v94
+v36.TextScaled = true
+v36.TextSize = 14
+v36.TextWrapped = true
+v36.MouseButton1Click:Connect(function()
+	if _u0 == false then
+		local v127 = game:GetObjects("rbxassetid://12457351744")
+		local v128 = game.Players.LocalPlayer:GetMouse()
+		v127[1].Parent = game.Workspace
+		local v130, v129, v131 = pairs(game.Players.LocalPlayer.Character:GetChildren())
+
+		while true do
+			local v133 = v132:IsA("MeshPart")
+
+			if not v133 then
+				v132.Transparency = 1
+			end
+
+			v133 = v132:IsA("Part")
+
+			if not v133 then
+				v132.Transparency = 1
+			end
+
+			v133 = v132:IsA("Accessory")
+
+			if not v133 then
+				v132:Destroy()
+			end
+
+			game.Players.LocalPlayer.Character.Head.face.Transparency = 1
+
+			for v134, v132 in v130, v129, v131 do
+			end
+
+			v130 = game:GetService("RunService")
+			v130.RenderStepped:Connect(function()
+				local v135 = _u0:PivotTo(1, 0)
+				_u0:PivotTo(_u0, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * v135)
+				v135 = math.rad(-30)
+				local v136 = CFrame.Angles(v135, 0, 0)
+				v136 = CFrame.new(0, 0.5, 10)
+				game.Workspace.CurrentCamera.CFrame = game.Players.LocalPlayer.Character.Head.CFrame * v136 * v136
+			end)
+			v128.Button1Down:connect(function()
+				local v137 = game:GetService("Workspace")
+				v137.morph.Figure.Scream:Play()
+			end)
+			game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 1
+			v130 = v127[1].SeekRig.AnimationController:LoadAnimation(v127[1].SeekRig.Animations.raise)
+			v129 = v127[1].SeekRig.AnimationController:LoadAnimation(v127[1].SeekRig.Animations.run)
+			v130:Play()
+			wait(6.3)
+			v130:Stop(0.5)
+			v129:Play()
+			v131 = game:GetService("Workspace")
+			v131.morph.Figure.Footsteps.Looped = true
+			v131 = game:GetService("Workspace")
+			v131.morph.Figure.Footsteps:Play()
+			v131 = game:GetService("Workspace")
+			v131.morph.Figure.FootstepsFar:Play()
+			v127[1].SeekRig.StringCheese:Remove()
+			v127[1].SeekRig.StringCheese:Remove()
+			v127[1].SeekRig.StringCheese:Remove()
+			v127[1].SeekRig.StringCheese:Remove()
+			v127[1].SeekRig.StringCheese:Remove()
+			v127[1].SeekRig.StringCheese:Remove()
+			v127[1].SeekRig.StringCheese:Remove()
+			game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 22
+			wait(3)
+			v127[1].SeekRig.SeekPuddle:Remove()
+			wait(0.1)
+			_u0 = true
+			_u1 = true
+		else
+			local v138 = game:GetService("ReplicatedStorage")
+			firesignal(v138.EntityInfo.Caption.OnClientEvent, "Please refresh before using any other entity | R", true, 5)
+		end
+end)
+local v139 = UDim.new(0, 10)
+v37.CornerRadius = v139
+v37.Parent = v36
+v38.Parent = v36
+v139 = Color3.fromRGB(255, 222, 189)
+v38.Color = v139
+v38.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+v39.Name = "Rush"
+v39.Parent = v23
+local v140 = Color3.fromRGB(38, 25, 25)
+v39.BackgroundColor3 = v140
+v39.BackgroundTransparency = 0.5
+v140 = UDim2.new(0.102909014, 0, 0.431920111, 0)
+v39.Position = v140
+v140 = UDim2.new(0, 170, 0, 60)
+v39.Size = v140
+v39.Font = Enum.Font.Oswald
+v39.Text = "Rush"
+v140 = Color3.fromRGB(255, 222, 189)
+v39.TextColor3 = v140
+v39.TextScaled = true
+v39.TextSize = 14
+v39.TextWrapped = true
+v39.MouseButton1Click:Connect(function()
+	if _u0 == false then
+		_u1 = true
+		local v141 = game:GetObjects("rbxassetid://12457753979")
+		v141[1].Parent = game.Workspace
+		local v143, v142, v144 = pairs(game.Players.LocalPlayer.Character:GetChildren())
+
+		while true do
+			local v146 = v145:IsA("MeshPart")
+
+			if not v146 then
+				v145.Transparency = 1
+			end
+
+			v146 = v145:IsA("Part")
+
+			if not v146 then
+				v145.Transparency = 1
+			end
+
+			v146 = v145:IsA("Accessory")
+
+			if not v146 then
+				v145:Destroy()
+			end
+
+			game.Players.LocalPlayer.Character.Head.face.Transparency = 1
+
+			for v147, v145 in v143, v142, v144 do
+			end
+
+			v141[1].RushNew.
