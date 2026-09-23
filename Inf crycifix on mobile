@@ -1,0 +1,454 @@
+local s1 = ""
+local u2 = _G.OnAnything or false;
+
+(function(_)
+	-- upvalues: u2 (ref), s1 (ref)
+	Color3.fromRGB(137, 207, 255)
+	Color3.fromRGB(134, 156, 253)
+	Color3.fromRGB(137, 207, 255)
+	Color3.fromRGB(216, 57, 65)
+	Color3.fromRGB(255, 137, 155)
+	Color3.fromRGB(255, 116, 130)
+
+	local u6 = _G.Uses or 1
+	local u7 = _G.Range or 30
+	local u8 = _G.Fail or false
+	local u9 = false
+	local mobileQHeld = false
+	local connection = nil
+	local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
+	local CurrentCamera = workspace.CurrentCamera
+	local u13 = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(p2)
+		-- upvalues: CurrentCamera (ref)
+		CurrentCamera.CFrame = CurrentCamera.CFrame * p2
+	end)
+
+	game:GetService("UserInputService")
+
+	local TweenService = game:GetService("TweenService")
+	local RunService = game:GetService("RunService")
+	local LocalPlayer = game.Players.LocalPlayer
+	local Character = LocalPlayer.Character
+
+	local function u18()
+		-- upvalues: u2 (ref), s1 (ref)
+		local huge = math.huge
+		local v23 = nil
+		local v24 = nil
+
+		for _, descendant in ipairs(workspace:GetDescendants()) do
+			if descendant:IsA("Model") then
+				local IsCustomEntity = descendant:GetAttribute("IsCustomEntity")
+
+				if u2 == true and descendant.Name == s1 then
+					local v28 = game.Players.LocalPlayer:DistanceFromCharacter(descendant.PrimaryPart.Position)
+
+					if v28 < huge then
+						v24 = true
+						huge = v28
+						v23 = descendant
+					end
+				end
+
+				if IsCustomEntity then
+					local v29 = game.Players.LocalPlayer:DistanceFromCharacter(descendant.PrimaryPart.Position)
+
+					if v29 < huge then
+						v24 = false
+						huge = v29
+						v23 = descendant
+					end
+				end
+			end
+		end
+
+		return v23, huge, v24
+	end
+
+	local v19 = game:GetObjects("rbxassetid://12849323184")[1]
+	local Repentance = v19.Repentance
+	local Crucifix = v19.Crucifix
+
+	Crucifix.Parent = LocalPlayer.Backpack
+	Crucifix.Equipped:Connect(function()
+		-- upvalues: u9 (ref), connection (ref), RunService (ref), u18 (ref), LocalPlayer (ref), u7 (ref), Character (ref), u13 (ref), u6 (ref), Crucifix (ref), s1 (ref)
+		u9 = true
+		connection = RunService.Stepped:Connect(function()
+			-- upvalues: u9 (ref), u18 (ref), LocalPlayer (ref), u7 (ref), Character (ref), u13 (ref), u6 (ref), Crucifix (ref), s1 (ref)
+			if u9 == true then
+				local v47, _, v49 = u18()
+
+				if v47 ~= nil and v47:GetAttribute("GoingToHell") ~= true and LocalPlayer:DistanceFromCharacter(v47.PrimaryPart.Position) <= u7 then
+					LastCFrame = Character.RightHand.CFrame * CFrame.Angles(math.rad(-90), 0, 0)
+					u13:Start()
+					u13:ShakeOnce(10, 30, 0.7, 0.5)
+
+					if u6 ~= 1 then
+						Crucifix.Parent = LocalPlayer.Backpack
+						u9 = false
+						u6 = u6 - 1
+					else
+						u9 = false
+						Crucifix:Destroy()
+					end
+
+					s1 = ""
+					v47:SetAttribute("GoingToHell", true)
+					HellModel(v47, v49)
+				end
+			end
+		end)
+	end)
+	Crucifix.Unequipped:Connect(function()
+		-- upvalues: u9 (ref), connection (ref)
+		u9 = false
+		connection:Disconnect()
+		connection = nil
+	end)
+
+	function HellModel(p3, _)
+		-- upvalues: u8 (ref), Character (ref), Repentance (ref), u13 (ref), TweenService (ref)
+		local clone
+
+		if not u8 then
+			clone = p3:Clone()
+			clone.Name = "Fake" .. p3.Name
+			clone.Parent = workspace
+			p3:Destroy()
+		else
+			clone = p3
+		end
+
+		local v34 = clone.PrimaryPart or clone:FindFirstChildOfClass("Part")
+		local raycastParams = RaycastParams.new()
+
+		raycastParams.FilterType = Enum.RaycastFilterType.Blacklist
+		raycastParams.FilterDescendantsInstances = {
+			Character,
+			clone
+		}
+
+		local raycastResult = workspace:Raycast(v34.Position, Vector3.new(0, -1, 0) * 20, raycastParams)
+		local clone2 = Repentance:Clone()
+
+		clone2.Parent = workspace
+
+		local Pentagram = clone2.Pentagram
+
+		if raycastResult then
+			local Part = Instance.new("Part")
+
+			Part.Anchored = true
+			Part.Position = raycastResult.Position + Vector3.new(0, 1, 0)
+			clone2:PivotTo(Part.CFrame * CFrame.new(0, -0.5, 0) * CFrame.Angles(0, 0, 0))
+			Part:Destroy()
+		end
+
+		for _, descendant in pairs(clone:GetDescendants()) do
+			if descendant:IsA("BasePart") then
+				descendant.Anchored = true
+			end
+		end
+
+		clone2.Crucifix.Glow.Anchored = false
+		clone2.Crucifix:PivotTo(LastCFrame)
+
+		if u8 then
+			clone2.Crucifix.Glow.SoundFail:Play()
+		else
+			clone2.Crucifix.Glow.Sound:Play()
+		end
+
+		clone2.Crucifix.Glow.BodyAngularVelocity.AngularVelocity = Vector3.new(0, 0, 0)
+
+		local v42 = Character.HumanoidRootPart.CFrame * CFrame.new(0, 3.5, -6)
+
+		clone2.Crucifix.Glow.BodyPosition.Position = v42.Position
+		u13:ShakeOnce(10, 15, 4, 5)
+
+		local function u43(p5)
+			-- upvalues: u8 (ref), TweenService (ref), clone2 (ref), Pentagram (ref), clone (ref)
+			task.wait(1.5)
+
+			if u8 then
+				TweenService:Create(clone2.Entity, TweenInfo.new(1.5, Enum.EasingStyle.Back, Enum.EasingDirection.In), {
+					Position = clone2.Entity.Position + Vector3.new(0, 3.5, 0)
+				}):Play()
+				task.spawn(function()
+					-- upvalues: TweenService (ref), Pentagram (ref)
+					task.wait(1.25)
+					TweenService:Create(Pentagram.Base.LightAttach.LightBright, TweenInfo.new(1.25, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
+						Range = 10,
+						Brightness = 2.5
+					}):Play()
+					task.wait(1.25)
+					TweenService:Create(Pentagram.Base.LightAttach.LightBright, TweenInfo.new(2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+						Range = 1,
+						Brightness = 0
+					}):Play()
+				end)
+				task.wait(2.1)
+				task.spawn(function()
+					-- upvalues: clone2 (ref), TweenService (ref), Pentagram (ref)
+					clone2.Crucifix.Glow.ExplodeParticle.Color = ColorSequence.new({
+						ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 116, 130)),
+						ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 116, 130))
+					})
+					TweenService:Create(Pentagram.Base.LightAttach.LightBright, TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.In), {
+						Color = Color3.fromRGB(255, 137, 155)
+					}):Play()
+					TweenService:Create(clone2.Crucifix.Glow, TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.In), {
+						Color = Color3.fromRGB(255, 137, 155)
+					}):Play()
+					TweenService:Create(clone2.Crucifix.Glow.Light, TweenInfo.new(0.25, Enum.EasingStyle.Sine, Enum.EasingDirection.In), {
+						Color = Color3.fromRGB(216, 57, 65)
+					}):Play()
+				end)
+
+				for _, child in pairs(Pentagram:GetChildren()) do
+					if child:IsA("Beam") then
+						if child.Name ~= "BeamFlat" then
+							if not "BeamChain" then
+							end
+						end
+
+						task.spawn(function()
+							-- upvalues: child (ref)
+							child.Color = ColorSequence.new({
+								ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 116, 130)),
+								ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 116, 130))
+							})
+						end)
+					end
+				end
+
+				task.wait(3.4)
+
+				for _, child in pairs(Pentagram:GetChildren()) do
+					if child:IsA("Beam") then
+						if child.Name ~= "BeamFlat" then
+							if not "BeamChain" then
+							end
+						end
+
+						task.spawn(function()
+							-- upvalues: child (ref), TweenService (ref)
+							if child:GetAttribute("Delay") ~= 0 then
+								task.wait(child:GetAttribute("Delay"))
+							end
+
+							TweenService:Create(child, TweenInfo.new(1, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {
+								Brightness = 0
+							}):Play()
+						end)
+					end
+				end
+			else
+				TweenService:Create(clone2.Entity, TweenInfo.new(1.5, Enum.EasingStyle.Back, Enum.EasingDirection.In), {
+					Position = clone2.Entity.Position + Vector3.new(0, 3.5, 0)
+				}):Play()
+				TweenService:Create(p5, TweenInfo.new(1.5, Enum.EasingStyle.Back, Enum.EasingDirection.In), {
+					Position = p5.Position + Vector3.new(0, 3.5, 0)
+				}):Play()
+				task.spawn(function()
+					-- upvalues: TweenService (ref), Pentagram (ref)
+					task.wait(0.5)
+					TweenService:Create(Pentagram.Base.LightAttach.LightBright, TweenInfo.new(2, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
+						Range = 30,
+						Brightness = 5
+					}):Play()
+					task.wait(1.75)
+					TweenService:Create(Pentagram.Base.LightAttach.LightBright, TweenInfo.new(4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+						Range = 1,
+						Brightness = 0
+					}):Play()
+				end)
+				task.wait(1.5)
+				TweenService:Create(p5, TweenInfo.new(2, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
+					Position = p5.Position - Vector3.new(0, 50, 0)
+				}):Play()
+				TweenService:Create(clone2.Entity, TweenInfo.new(2, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
+					Position = clone2.Entity.Position - Vector3.new(0, 50, 0)
+				}):Play()
+				task.spawn(function()
+					-- upvalues: TweenService (ref), clone2 (ref)
+					task.wait(0.5)
+					TweenService:Create(clone2.Crucifix.Glow.Light, TweenInfo.new(1.25, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
+						Range = 30,
+						Brightness = 5
+					}):Play()
+				end)
+				task.wait(1)
+
+				for _, descendant in pairs(clone:GetDescendants()) do
+					if not descendant:IsA("Sound") then
+						if descendant:IsA("Light") then
+							TweenService:Create(descendant, TweenInfo.new(3, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
+								Range = 0
+							}):Play()
+						end
+					else
+						TweenService:Create(descendant, TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
+							Volume = 0
+						}):Play()
+					end
+				end
+
+				for _, child in pairs(Pentagram:GetChildren()) do
+					if child.Name == "BeamFlat" then
+						task.spawn(function()
+							-- upvalues: child (ref), TweenService (ref)
+							if child:GetAttribute("Delay") ~= 0 then
+								task.wait(child:GetAttribute("Delay"))
+							end
+
+							TweenService:Create(child, TweenInfo.new(1, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {
+								Brightness = 0
+							}):Play()
+						end)
+					end
+				end
+			end
+		end
+
+		task.spawn(function()
+			-- upvalues: TweenService (ref), Pentagram (ref), clone2 (ref)
+			TweenService:Create(Pentagram.Circle, TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+				Position = Pentagram.Circle.Position - Vector3.new(0, 7.5, 0)
+			}):Play()
+			task.wait(1)
+			Pentagram.Circle.Anchored = false
+			TweenService:Create(clone2.Crucifix.Glow.BodyAngularVelocity, TweenInfo.new(2.5, Enum.EasingStyle.Sine, Enum.EasingDirection.In), {
+				AngularVelocity = Vector3.new(0, 30, 0)
+			}):Play()
+			task.wait(4)
+			TweenService:Create(clone2.Crucifix.Glow.BodyAngularVelocity, TweenInfo.new(1.5, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {
+				AngularVelocity = Vector3.new(0, 0, 0)
+			}):Play()
+		end)
+
+		for _, descendant in pairs(clone:GetDescendants()) do
+			if descendant:IsA("BasePart") then
+				task.spawn(function()
+					-- upvalues: u43 (ref), descendant (ref)
+					u43(descendant)
+				end)
+			end
+		end
+
+		task.spawn(function()
+			-- upvalues: u8 (ref), clone2 (ref), TweenService (ref), u13 (ref)
+			task.wait(6.5)
+
+			if u8 then
+				clone2.Crucifix.Glow.Light.Enabled = false
+				TweenService:Create(clone2.Crucifix.Glow.Light, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+					Brightness = 0,
+					Range = 1
+				}):Play()
+				task.wait(3)
+				TweenService:Create(clone2.Crucifix.Glow, TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+					Size = clone2.Crucifix.Glow.Size * 3.5
+				}):Play()
+				TweenService:Create(clone2.Crucifix.Glow, TweenInfo.new(1.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+					Transparency = 1
+				}):Play()
+				clone2.Crucifix.Glow.ExplodeParticle:Emit(50)
+			else
+				clone2.Crucifix.Glow.Light.Enabled = false
+				TweenService:Create(clone2.Crucifix.Glow, TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+					Size = clone2.Crucifix.Glow.Size * 3.5
+				}):Play()
+				TweenService:Create(clone2.Crucifix.Glow, TweenInfo.new(1.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+					Transparency = 1
+				}):Play()
+				clone2.Crucifix.Glow.ExplodeParticle:Emit(50)
+			end
+
+			u13:ShakeOnce(3, 10, 0.7, 0.5)
+		end)
+		task.wait(u8 and 11.5 or 9)
+		task.spawn(function()
+			-- upvalues: clone2 (ref), u8 (ref), p3 (ref), clone (ref)
+			clone2:Destroy()
+
+			if not u8 or p3:GetAttribute("IsCustomEntity") == true then
+				clone:Destroy()
+			end
+		end)
+	end
+end)()
+-- Mobile Q button
+-- Hold this button on a phone/tablet to behave like holding the Q key.
+do
+\tlocal Players = game:GetService("Players")
+\tlocal UserInputService = game:GetService("UserInputService")
+\tlocal player = Players.LocalPlayer
+
+\tif UserInputService.TouchEnabled then
+\t\tlocal playerGui = player:WaitForChild("PlayerGui")
+
+\t\tlocal screenGui = Instance.new("ScreenGui")
+\t\tscreenGui.Name = "MobileQGui"
+\t\tscreenGui.ResetOnSpawn = false
+\t\tscreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+\t\tscreenGui.Parent = playerGui
+
+\t\tlocal qButton = Instance.new("TextButton")
+\t\tqButton.Name = "QButton"
+\t\tqButton.AnchorPoint = Vector2.new(1, 1)
+\t\tqButton.Position = UDim2.new(1, -25, 1, -145)
+\t\tqButton.Size = UDim2.fromOffset(80, 80)
+\t\tqButton.BackgroundTransparency = 0.15
+\t\tqButton.BackgroundColor3 = Color3.fromRGB(45, 45, 55)
+\t\tqButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+\t\tqButton.Text = "Q"
+\t\tqButton.TextScaled = true
+\t\tqButton.Font = Enum.Font.GothamBold
+\t\tqButton.AutoButtonColor = true
+\t\tqButton.ZIndex = 10
+\t\tqButton.Parent = screenGui
+
+\t\tlocal corner = Instance.new("UICorner")
+\t\tcorner.CornerRadius = UDim.new(0, 16)
+\t\tcorner.Parent = qButton
+
+\t\tlocal stroke = Instance.new("UIStroke")
+\t\tstroke.Thickness = 2
+\t\tstroke.Transparency = 0.25
+\t\tstroke.Parent = qButton
+
+\t\tqButton.InputBegan:Connect(function(input)
+\t\t\tif input.UserInputType == Enum.UserInputType.Touch
+\t\t\t\tor input.UserInputType == Enum.UserInputType.MouseButton1 then
+\t\t\t\tmobileQHeld = true
+\t\t\t\tqButton.BackgroundColor3 = Color3.fromRGB(80, 120, 255)
+\t\t\tend
+\t\tend)
+
+\t\tqButton.InputEnded:Connect(function(input)
+\t\t\tif input.UserInputType == Enum.UserInputType.Touch
+\t\t\t\tor input.UserInputType == Enum.UserInputType.MouseButton1 then
+\t\t\t\tmobileQHeld = false
+\t\t\t\tqButton.BackgroundColor3 = Color3.fromRGB(45, 45, 55)
+\t\t\tend
+\t\tend)
+\tend
+end
+
+game.Players.LocalPlayer:GetMouse().Button1Down:Connect(function()
+	-- upvalues: s1 (ref)
+	if game.UserInputService:IsKeyDown(Enum.KeyCode.Q) or mobileQHeld then
+		local Target = game.Players.LocalPlayer:GetMouse().Target
+
+		if Target then
+			local Model = Target:FindFirstAncestorWhichIsA("Model")
+
+			if Model ~= nil and Model.PrimaryPart and Model.Parent.Name ~= "CurrentRooms" then
+				s1 = Model.Name
+			end
+		end
+
+		return
+	end
+end)
