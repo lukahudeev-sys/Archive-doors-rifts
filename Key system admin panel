@@ -1,0 +1,182 @@
+--// Конфиг \\--
+local KeyFolder     = "mspaint"
+local KeyFile       = KeyFolder .. "/key.txt"
+local UsedKeysFile  = KeyFolder .. "/used_keys.txt"
+
+-- Валидные ключи (хардкод). Добавляй сюда сколько нужно.
+local HARDCODED_KEYS = {
+    ["PAINT-TEST-KEY-0001"] = true,
+    ["PAINT-TEST-KEY-0002"] = true,
+    -- ["твой_ключ"] = true,
+}
+
+-- (Опционально) URL, где лежит JSON-массив ключей: ["key1","key2",...]
+-- Оставь nil, если хочешь только хардкод.
+local VALID_KEYS_URL = nil
+
+-- Куда грузим после активации
+local PANEL_URL = "https://raw.githubusercontent.com/lukahudeev-sys/Purple-shakelight/refs/heads/main/admin%20panel%20hub"
+
+--// Utils \\--
+local cloneref = cloneref or clonereference or function(...) return (...) end
+
+local function ensureFolder()
+    if not isfolder(KeyFolder) then pcall(makefolder, KeyFolder) end
+end
+
+local function readFileSafe(path)
+    local ok, content = pcall(readfile, path)
+    if ok and typeof(content) == "string" then return content end
+    return nil
+end
+
+local function writeFileSafe(path, content)
+    ensureFolder()
+    return (pcall(writefile, path, content))
+end
+
+local function trimKey(key)
+    if typeof(key) ~= "string" then return nil end
+    local trimmed = key:match("^%s*(.-)%s*$")
+    if not trimmed or #trimmed < 8 then return nil end
+    return trimmed
+end
+
+--// Проверка ключа \\--
+local ValidKeysCache = nil
+local function loadValidKeys()
+    if ValidKeysCache then return ValidKeysCache end
+    local set = {}
+    for k in pairs(HARDCODED_KEYS) do set[k] = true end
+
+    if VALID_KEYS_URL then
+        pcall(function()
+            local raw = game:HttpGet(VALID_KEYS_URL)
+            local decoded = game:GetService("HttpService"):JSONDecode(raw)
+            if typeof(decoded) == "table" then
+                for _, k in ipairs(decoded) do
+                    if typeof(k) == "string" then set[k] = true end
+                end
+            end
+        end)
+    end
+
+    ValidKeysCache = set
+    return set
+end
+
+local function isValidKey(key)
+    return loadValidKeys()[key] == true
+end
+
+--// Отслеживание использованных ключей \\--
+local function getUsedKeys()
+    local set = {}
+    local content = readFileSafe(UsedKeysFile)
+    if content then
+        for line in content:gmatch("[^\r\n]+") do
+            if line ~= "" then set[line] = true end
+        end
+    end
+    return set
+end
+
+local function isKeyUsed(key)
+    return getUsedKeys()[key] == true
+end
+
+local function markKeyUsed(key)
+    if isKeyUsed(key) then return end
+    local content = readFileSafe(UsedKeysFile) or ""
+    content = content .. key .. "\n"
+    writeFileSafe(UsedKeysFile, content)
+end
+
+--// Загрузка панели \\--
+local function loadPanel()
+    local ok = pcall(function()
+        loadstring(game:HttpGet(PANEL_URL))()
+    end)
+    return ok
+end
+
+--// Если ключ уже сохранён и валиден — сразу грузим панель \\--
+do
+    local savedKey = trimKey(readFileSafe(KeyFile))
+    if savedKey and isValidKey(savedKey) then
+        loadPanel()
+        return
+    end
+end
+
+--// Иначе — показываем окно ввода ключа \\--
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/main/Library.lua"))()
+
+local Window = Library:CreateWindow({
+    Title = "mspaint",
+    Center = true,
+    AutoShow = true,
+    Resizable = false,
+    ShowCustomCursor = false,
+    NotifySide = "Right",
+    TabPadding = 2,
+    MenuFadeTime = 0,
+    Size = UDim2.fromOffset(500, 320),
+    Footer = "Key System",
+})
+
+local KeyTab = Window:AddKeyTab("Key")
+
+KeyTab:AddLabel({
+    Text = "Введите ключ для активации",
+    DoesWrap = true,
+    Size = 20,
+})
+
+KeyTab:AddLabel({
+    Text = "Каждый ключ можно активировать только один раз.",
+    DoesWrap = true,
+    Size = 14,
+})
+
+KeyTab:AddKeyBox(function(receivedKey)
+    local key = trimKey(receivedKey)
+    if not key then
+        Library:Notify({
+            Title = "Ошибка",
+            Description = "Неверный формат ключа.",
+        })
+        return
+    end
+
+    if not isValidKey(key) then
+        Library:Notify({
+            Title = "Ошибка",
+            Description = "Ключ недействителен.",
+        })
+        return
+    end
+
+    if isKeyUsed(key) then
+        Library:Notify({
+            Title = "Ошибка",
+            Description = "Этот ключ уже был активирован и не может быть использован повторно.",
+        })
+        return
+    end
+
+    -- Активация
+    markKeyUsed(key)
+    writeFileSafe(KeyFile, key)
+
+    Library:Notify({
+        Title = "Успех",
+        Description = "Ключ успешно активирован!",
+    })
+
+    task.wait(0.5)
+    Library:Unload()
+    task.wait(0.2)
+
+    loadPanel()
+end)
