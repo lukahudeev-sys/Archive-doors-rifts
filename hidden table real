@@ -1,3 +1,0 @@
-task.spawn(function()
-SafeLoadFileCached("https://raw.githubusercontent.com/lukahudeev-sys/Archive-doors-rifts/refs/heads/main/hidden%20table%20doors")
-end)
