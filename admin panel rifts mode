@@ -1,12 +1,15 @@
 --// Конфиг ключей \\--
-local KeyFolder     = "mspaint"
+local KeyFolder     = "lkagod hub"
 local KeyFile       = KeyFolder .. "/key.txt"
 local UsedKeysFile  = KeyFolder .. "/used_keys.txt"
 
 -- Сюда добавь свои ключи (минимум 8 символов)
 local HARDCODED_KEYS = {
-    ["PAINT-TEST-KEY-0001"] = true,
-    ["PAINT-TEST-KEY-0002"] = true,
+    ["asdhfjasdfjasdkjfnkjbfkjnbkjasfnv"] = true,
+    ["asdfnbkvjnasfknafbkjnfakbgkjfgnbk"] = true,
+    ["bnfgifndbiufgbidfngjndfkjgbndfjkg"] = true,
+    ["qweiotuertyudfjngdfjknbsdkljbnsdk"] = true,
+    ["bnkdfhsnskljdfnbjnsdkbsndkjfnbkjb"] = true,
     -- ["ТВОЙ_КЛЮЧ"]        = true,
 }
 
@@ -220,15 +223,24 @@ local function loadPanel()
         ["Starlight vial"]       = "https://raw.githubusercontent.com/lukahudeev-sys/Purple-shakelight/main/starlight%20vial",
         ["viridis vial"]         = "https://raw.githubusercontent.com/lukahudeev-sys/Purple-shakelight/main/viridis%20small%20vial",
         ["Viridis jug"]          = "https://raw.githubusercontent.com/lukahudeev-sys/Purple-shakelight/main/viridis%20spiral%20jug",
-    }
-
-    local EXTRAS = {
-        ["Giggle in jail :("] = "https://raw.githubusercontent.com/OoOoALemon/OL1/main/README.md",
-        ["Eat Everything"]    = "https://raw.githubusercontent.com/JohnyGamingLUA/EatEverythingDOORS/main/obfuscated.lua",
-        ["Speedrun Timer"]    = "https://raw.githubusercontent.com/Iliankytb/Iliankytb/main/SpeedrunTimer",
-        ["Coolkid Seek"]      = "https://raw.githubusercontent.com/IdkMyNameLoll/PublicScripts/main/c00lkiddSeek",
-        ["Chill Seek"]        = "https://raw.githubusercontent.com/Idk-lol2/chill-seek/main/chillseklal.Pl.txt",
-        ["Chill Light"]       = "https://pastebin.com/raw/nCYbqkAb",
+        ["sevenup"]              = "https://raw.githubusercontent.com/lukahudeev-sys/Purple-shakelight/refs/heads/main/sourse/sevenup%20doors",
+        ["bloxycola"]            = "https://raw.githubusercontent.com/lukahudeev-sys/Purple-shakelight/refs/heads/main/sourse/bloxy%20cola%20doors%20drink",
+        ["pepsi"]                = "https://raw.githubusercontent.com/lukahudeev-sys/Purple-shakelight/refs/heads/main/sourse/pepsi%20cola%20doors%20drink",
+        ["mountain dew"]         = "https://raw.githubusercontent.com/lukahudeev-sys/Purple-shakelight/refs/heads/main/sourse/mountaindew%20doors",
+        ["Lit energy"]           = "https://raw.githubusercontent.com/lukahudeev-sys/Purple-shakelight/refs/heads/main/sourse/Lit%20energy%20doors%20drink",
+        ["fanta"]                = "https://raw.githubusercontent.com/lukahudeev-sys/Purple-shakelight/refs/heads/main/sourse/Fanta%20doors",
+        ["sweppes"]              = "https://raw.githubusercontent.com/lukahudeev-sys/Purple-shakelight/refs/heads/main/sourse/Sweppes%20doors",
+        ["Teastory energy"]      = "https://raw.githubusercontent.com/lukahudeev-sys/Purple-shakelight/refs/heads/main/sourse/TEASTORY%20energy%20doors",
+        ["blox energy"]          = "https://raw.githubusercontent.com/lukahudeev-sys/Purple-shakelight/refs/heads/main/sourse/blox%20energy%20doors",
+        ["coca cola"]            = "https://raw.githubusercontent.com/lukahudeev-sys/Purple-shakelight/refs/heads/main/sourse/coca%20cola%20doors",
+        ["dr pepper"]            = "https://raw.githubusercontent.com/lukahudeev-sys/Purple-shakelight/refs/heads/main/sourse/dr%20pepper%20doors",
+        ["golden lit energy"]    = "https://raw.githubusercontent.com/lukahudeev-sys/Purple-shakelight/refs/heads/main/sourse/golden%20lit%20energy",
+        ["lemonade"]             = "https://raw.githubusercontent.com/lukahudeev-sys/Purple-shakelight/refs/heads/main/sourse/lemonade%20doors",
+        ["lipton"]               = "https://raw.githubusercontent.com/lukahudeev-sys/Purple-shakelight/refs/heads/main/sourse/lipton%20doors",
+        ["monster energy"]       = "https://raw.githubusercontent.com/lukahudeev-sys/Purple-shakelight/refs/heads/main/sourse/moster%20energy%20doors",
+        ["polygon energy"]       = "https://raw.githubusercontent.com/lukahudeev-sys/Purple-shakelight/refs/heads/main/sourse/polygon%20doors",
+        ["prime"]                = "https://raw.githubusercontent.com/lukahudeev-sys/Purple-shakelight/refs/heads/main/sourse/prime",
+        ["sprite"]               = "https://raw.githubusercontent.com/lukahudeev-sys/Purple-shakelight/refs/heads/main/sourse/sprite%20doors",
     }
 
     local function collectKeys(t)
